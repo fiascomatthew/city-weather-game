@@ -11,7 +11,8 @@
     "esm": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "environment.d.ts"
   ],
   "exclude": [
     "node_modules"
