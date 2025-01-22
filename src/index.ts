@@ -10,18 +10,19 @@ main();
 async function main() {
   const cityName = await getRandomCityName();
   const cityWeather = await fetchCityWeather(cityName);
-  console.log(cityWeather);
+  const cityWeatherTemperature = Math.round(cityWeather.main.temp);
+
   let userTemperatureGuess;
 
   do {
     userTemperatureGuess = await promptUserForTemperature(cityName);
 
-    if (userTemperatureGuess < cityWeather.temperature) { console.log("C'est plus !"); }
-    if (userTemperatureGuess > cityWeather.temperature) { console.log("C'est moins !"); }
+    if (userTemperatureGuess < cityWeatherTemperature) { console.log("C'est plus !"); }
+    if (userTemperatureGuess > cityWeatherTemperature) { console.log("C'est moins !"); }
 
-  } while (userTemperatureGuess !== cityWeather.temperature);
+  } while (userTemperatureGuess !== cityWeatherTemperature);
 
-  console.log(`Bien joué ! La température à ${cityName} est bien de ${cityWeather.temperature}°C.`);
+  console.log(`Bien joué ! La température à ${cityName} est bien de ${cityWeatherTemperature}°C.`);
 }
 
 
