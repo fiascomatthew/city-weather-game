@@ -20,8 +20,8 @@ async function main() {
 }
 
 
-async function promptUserForTemperature(cityName) {
-  const { temperature } = await inquirer.prompt([{
+async function promptUserForTemperature(cityName: string) {
+  const { temperature } = await inquirer.prompt<{ temperature: number }>([{
     type: "number",
     name: "temperature",
     message: `Quelle est la température à ${cityName} ?`
@@ -31,10 +31,10 @@ async function promptUserForTemperature(cityName) {
 
 async function getRandomCityName() {
   // TODO: implement and extract this function using this API : https://restcountries.com
-  return "Paris";
+  return "Londres";
 }
 
-async function fetchCityWeather(cityName) {
+async function fetchCityWeather(cityName: string) {
   // TODO: implement and extract this function using this API : https://github.com/robertoduessmann/weather-api
   return { temperature: 10, description: "Sunny" };
 }

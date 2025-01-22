@@ -4,9 +4,9 @@
   "description": "City Weather Game - Typescript",
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "build": "npx tsc --watch",
     "start": "node ./dist/index.js",
-    "dev": "ts-node src/index.ts"
+    "dev": "npx ts-node ./src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +15,8 @@
     "@types/inquirer": "^9.0.7",
     "@types/node": "^22.10.7",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "undici-types": "^7.3.0"
   },
   "dependencies": {
     "inquirer": "^12.3.2"
