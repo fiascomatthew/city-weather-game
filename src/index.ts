@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 const weatherUrl: string = process.env.WEATHER_FORECAST_SERVICE_URL;
+const restCountriesUrl: string = process.env.REST_COUNTRIES_URL;
 
 main();
 
@@ -36,8 +37,22 @@ async function promptUserForTemperature(cityName: string) {
 }
 
 async function getRandomCityName() {
-  // TODO: implement and extract this function using this API : https://restcountries.com
-  return "Londres";
+  try {
+    const response = await axios.get(restCountriesUrl, {
+      params: {
+        fields: 'capital'
+      }
+    });
+
+    const citiesWithCapital = response.data.filter((city: any) => city.capital);
+
+    if (citiesWithCapital.length > 0) {
+      return citiesWithCapital[Math.floor(Math.random() * citiesWithCapital.length)].capital[0];
+    }
+
+  } catch (error: any) {
+    console.log("Error fetching cities:", error.response);
+  }
 }
 
 async function fetchCityWeather(cityName: string) {
@@ -53,7 +68,7 @@ async function fetchCityWeather(cityName: string) {
     return response.data;
 
   } catch (error: any) {
-    console.log("WEATHER FORECAST API ERROR: ", error.response);
+    console.log("Error fetching weather forecast:", error.response);
   }
 
 }
