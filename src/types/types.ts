@@ -8,3 +8,8 @@ export interface Weather {
   description: string;
   wind: number;
 }
+
+export enum Difficulty {
+  HARD = "Difficile",
+  EASY = "Facile"
+};
