@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const mongoUri: string = process.env.MONGO_URI || "mongodb://localhost:23017";
+const mongoUri: string = process.env.MONGO_URI || "mongodb://localhost:5555";
 const dbName: string = process.env.DB_NAME || "temperature";
 
 export async function saveScore(pseudo: string, score: number): Promise<void> {

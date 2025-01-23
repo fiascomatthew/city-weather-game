@@ -28,7 +28,7 @@ async function main() {
   console.log(`Bien joué ! La température à ${city.name} est bien de ${cityWeather.temperature}°C.`);
   console.log(`Tu as trouvé en ${counter} essai(s)!`);
 
-  const pseudo = promptUserForPseudo();
+  const pseudo = await promptUserForPseudo();
 
   if (pseudo && typeof pseudo === 'string') {
     await saveScore(pseudo, counter);
