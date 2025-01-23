@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 
 export class HttpRequester {
-  static async get<T>(url: string, params: object) {
+  static async get<T>(url: string, params?: object) {
     let httpResponse: AxiosResponse<T>;;
 
     try {
@@ -17,10 +17,7 @@ export class HttpRequester {
       throw error;
     }
 
-    return {
-      body: httpResponse.data,
-      statusCode: httpResponse.status
-    };
+    return httpResponse.data;
   }
 }
 
