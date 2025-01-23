@@ -1,0 +1,10 @@
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 5555:5555
+    command:
+      - mongod
+      - --bind_ip_all
+      - --port
+      - "5555"
