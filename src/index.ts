@@ -1,10 +1,13 @@
-import inquirer from "inquirer";
 import axios from "axios";
 import dotenv from 'dotenv';
+import { promptUserForTemperature } from "./promptUserForTemperature.js";
 
 dotenv.config();
 const weatherUrl: string = process.env.WEATHER_FORECAST_SERVICE_URL;
 const restCountriesUrl: string = process.env.REST_COUNTRIES_URL;
+
+//Temprary solution for restcountries SSL issue
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
 main();
 
@@ -26,16 +29,6 @@ async function main() {
   console.log(`Bien joué ! La température à ${cityName} est bien de ${cityWeatherTemperature}°C.`);
 }
 
-
-async function promptUserForTemperature(cityName: string) {
-  const { temperature } = await inquirer.prompt<{ temperature: number }>([{
-    type: "number",
-    name: "temperature",
-    message: `Quelle est la température à ${cityName} ?`
-  }]);
-  return temperature;
-}
-
 async function getRandomCityName() {
   try {
     const response = await axios.get(restCountriesUrl, {
@@ -51,7 +44,7 @@ async function getRandomCityName() {
     }
 
   } catch (error: any) {
-    console.log("Error fetching cities:", error.response);
+    console.log("Error fetching cities:", error);
   }
 }
 
@@ -68,7 +61,7 @@ async function fetchCityWeather(cityName: string) {
     return response.data;
 
   } catch (error: any) {
-    console.log("Error fetching weather forecast:", error.response);
+    console.log("Error fetching weather forecast:", error);
   }
 
 }
