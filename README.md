@@ -18,19 +18,27 @@
    npm install
    ```
 
-3. **Compile the project**
+3. **Create .env file**
+
+   Create .env file by copying .env.example file and replace "YOUR_API_KEY" by your Open Weather Map Api key (https://openweathermap.org/) :
+    
+   ```bash
+   WEATHER_FORECAST_SERVICE_API_KEY=YOUR_API_KEY
+   ```
+
+4. **Compile the project**
 
    ```bash
    npm run build
    ```
 
-4. **Run the app and start the game**
+5. **Run the app and start the game**
 
    ```bash
    npm run start
    ```
 
-5. **Play**
+6. **Play**
 
     Follow the prompts in the terminal to play the game:
 
