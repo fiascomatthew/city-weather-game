@@ -1,4 +1,5 @@
 # Weather Guesser
+Weather Guesser is an interactive terminal-based game where players guess the temperature of randomly selected cities based on their difficulty level. It uses MongoDB for score storage and integrates OpenWeatherMap API for weather data. The game leverages Node.js and prompts players through the terminal for an engaging experience.
 
 ## Setup Instructions
 
